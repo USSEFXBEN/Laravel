@@ -15,10 +15,11 @@ class RecetasController extends Controller
     }
 
     public function show($receta, $categoria=null){
-        if($categoria != null){
-            return "Detalles de la receta $receta, de la categoria $categoria";
-        }else{
-            return "Detalles de la receta $receta";
-        }
+        // if($categoria != null){
+        //     return "Detalles de la receta $receta, de la categoria $categoria";
+        // }else{
+        //     return "Detalles de la receta $receta";
+        // }
+        return views('show', 'receta' => $receta, 'cat' => $categoria);
     }
 }

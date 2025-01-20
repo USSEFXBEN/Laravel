@@ -1,31 +1,49 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RecetasController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RecetaController;
 
-// Ruta Principal
-Route::get('/', function () {
-    return "Bienvenido A La Página Home";
-});
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
-// Rutas de Recetas con un Controlador Dedicado
-Route::prefix('recetas')->name('recetas.')->group(function () {
-    // Página Principal de Recetas
-    Route::get('/', function () {
-        return "Bienvenido A Mi Recetario";
-    })->name('index');
+// Route::get('/', function () {
+//     return "Bienvenido a la página Home";
+// });
 
-    // Página para Crear una Receta
-    Route::get('create', function () {
-        return "Sección para Crear Recetas";
-    })->name('create');
+Route::get('/', HomeController::class);
 
-    // Mostrar recetas por categoría y receta (opcional)
-    Route::get('{categoria}/{receta?}', function ($categoria, $receta = null) {
-        if ($receta === null) {
-            return "Recetas de las categorías: $categoria";
-        } else {
-            return "Categoría $categoria: Detalle de la receta $receta";
-        }
-    })->name('show');
+
+// Route::get('recetas', function () {
+//     return "Bienvenido al recetario";
+// });
+
+// Route::get('recetas/create', function(){
+//     return "Seccion para crear una receta";
+// });
+
+// Route::get('recetas/{categoria}/{receta?}', function($categoria, $receta=null){
+//     if($receta==null){
+//         return "Recetas de las categorias: $categoria";
+//     }else{
+//         return "Categoria $categoria: Detalle de la receta $receta";
+//     }
+// });
+
+// Route::get('recetas', [RecetasController::class, 'index']);
+// Route::get('recetas/create', [RecetasController::class, 'create']);
+// Route::get('receta/{receta}/{categoria?}', [RecetasController::class, 'show']);
+
+Route::controller(RecetasController::class)->group(function(){
+    Route::get('recetas', 'index');
+    Route::get('recetas/create', 'create');
+    Route::get('recetas/{receta}/{categoria?}', 'show');
 });

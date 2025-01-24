@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class TareasController extends Controller
+{
+    public function index(){
+        return "Bienvenidos a las recetas";
+    }
+
+    public function create(){
+        return "Seccion para crear una tarea";
+    }
+
+    public function show($tarea, $categoria=null){
+        // if($categoria != null){
+        //     return "Detalles de la receta $receta, de la categoria $categoria";
+        // }else{
+        //     return "Detalles de la receta $receta";
+        // }
+        return view('show', ['tarea' => $tarea, 'categoria' => $categoria]);
+    }
+}

@@ -1,8 +1,7 @@
 @extends('layouts.plantilla')
-@section('titulo', 'Recetario')
+
+@section('titulo', 'Index')
 
 @section('contenido')
-
-@endsection
-<h1>Bienvenido a mi recetario</h1>
+    <h1>Bienvenido a mi recetario </h1>
 @endsection

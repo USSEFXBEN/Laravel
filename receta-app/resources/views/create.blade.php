@@ -1,8 +1,8 @@
 @extends('layouts.plantilla')
-@section('titulo', 'Crear recetas')
+
+@section('titulo', 'Create')
 
 @section('contenido')
-
+    <h1>Seccion para crear una receta</h1>
 @endsection
-<h1>Seccion para crear recetas</h1>
-@endsection
+    

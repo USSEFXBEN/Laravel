@@ -22,7 +22,7 @@
     <header class="row py-4 bg-secondary m-0">
         <div class="col-6">
             <div class="d-flex align-items-center justify-content-start">
-                <img src="{{ asset('storage/images/logo.png') }}" class="img-fluid logo me-2" alt="Logo IES">
+                <img src="{{ asset('storage/images/receta.png') }}" class="img-fluid logo me-2" alt="Logo IES">
             <p class="display-6 text-light">Recetario App</p>
             </div>
            

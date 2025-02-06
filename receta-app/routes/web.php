@@ -33,4 +33,11 @@ Route::controller(CategoriaController::class)->group(function () {
 
     // Delete
     Route::delete('categorias/{categoria}', 'delete')->name('categorias.delete');
+    Route::controller(RecetaController::class)->group(function () {
+        Route::get('categorias/{categoria}/recetas', 'index')->name('recetas.index');
+
+
+        Route::get('categorias/{categoria}/recetas/create', 'create')->name('recetas.create');
+        Route::post('categorias/{categoria}/recetas/store', 'store')->name('recetas.store');
+    });
 });

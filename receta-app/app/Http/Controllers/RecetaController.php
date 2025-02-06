@@ -3,12 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Receta;
+use App\Models\Categoria;
+
 
 class RecetaController extends Controller
 {
-    public function index(){
-        return "Bienvenidos a las recetas";
+    public function index(Categoria $categoria)
+    {              
+        //$recetas = Receta::where('categoria_id', $categoria['id'])->get();
+       
+        $recetas = $categoria->recetas()->get();      
+       
+        return view('index', compact('recetas', 'categoria'));
     }
+
+
+
 
     public function create(){
         return "Seccion para crear una receta";
@@ -22,4 +33,5 @@ class RecetaController extends Controller
         // }
         return view('show', ['receta' => $receta, 'categoria' => $categoria]);
     }
+    
 }

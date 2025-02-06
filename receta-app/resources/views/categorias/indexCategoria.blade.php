@@ -45,7 +45,7 @@
                         <h5 class="card-title">{{ $cat->nombre }}</h5>
                         <p class="card-text">{{ $cat->descripcion }}</p>
                         <a href="{{ route('categorias.edit', $cat) }}" class="btn btn-warning">Editar categoría</a>
-                        <a href="" class="btn btn-primary ">Ver recetas</a>
+                        <a href="{{ route('recetas.index', $cat) }}" class="btn btn-primary ">Ver recetas</a>
                         <form action={{ route('categorias.delete', $cat) }} method="post" class="mt-1">
                             @csrf
                             @method('delete')

@@ -10,6 +10,15 @@ class Receta extends Model
 {
     use HasFactory;
     //Para indicar que la receta pertenece a una categoria
+    protected $fillable = [
+        'titulo',
+        'descripcion',
+        'instrucciones',
+        'tiempo_cocinado',
+        'dificultad',
+        'categoria_id'
+    ];
+
     public function categoria(): BelongsTo
     {
         return $this->belongsTo(Categoria::class); 

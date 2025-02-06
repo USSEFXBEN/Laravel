@@ -9,6 +9,8 @@ class Categoria extends Model
 {
     use HasFactory;
     //Relacion 1 a muchos - 1:N (una categoria tiene muca recestas)
+    protected $fillable = ['nombre', 'descripcion'];
+
     public function recetas(): HasMany
     {
         return $this->hasMany(Receta::class); 

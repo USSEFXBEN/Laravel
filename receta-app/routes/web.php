@@ -1,50 +1,36 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RecetasController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecetaController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\HomeController;
 
+// Ruta Principal
+Route::get('/', HomeController::class)->name('home');
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// Rutas RecetaController
+Route::controller(RecetaController::class)->group(function () {
+    Route::get('recetas', 'index');
+    Route::get('recetas/create', 'create');
+    Route::get('recetas/{receta}/{categoria?}', 'show');
 
-// Route::get('/', function () {
-//     return "Bienvenido a la página Home";
-// });
+    Route::get('categorias', 'index')->name('categorias.index');
+    Route::get('categorias/create', 'create')->name('categorias.create');
+});
 
-Route::get('/', HomeController::class)->name('Home');
+// Rutas CategoriaController
+Route::controller(CategoriaController::class)->group(function () {
+    // Read
+    Route::get('categorias', 'index')->name('categorias.index');
 
+    // Create
+    Route::get('categorias/create', 'create')->name('categorias.create');
+    Route::post('categorias', 'store')->name('categorias.store');
 
-// Route::get('recetas', function () {
-//     return "Bienvenido al recetario";
-// });
+    // Update
+    Route::get('categorias/{categoria}/edit', 'edit')->name('categorias.edit');
+    Route::put('categorias/{categoria}', 'update')->name('categorias.update');
 
-// Route::get('recetas/create', function(){
-//     return "Seccion para crear una receta";
-// });
-
-// Route::get('recetas/{categoria}/{receta?}', function($categoria, $receta=null){
-//     if($receta==null){
-//         return "Recetas de las categorias: $categoria";
-//     }else{
-//         return "Categoria $categoria: Detalle de la receta $receta";
-//     }
-// });
-
-// Route::get('recetas', [RecetasController::class, 'index']);
-// Route::get('recetas/create', [RecetasController::class, 'create']);
-// Route::get('receta/{receta}/{categoria?}', [RecetasController::class, 'show']);
-
-Route::controller(RecetasController::class)->group(function () {
-    Route::get('recetas', [RecetasController::class, 'index'])->name('recetas.index');
-    Route::get('recetas/create', [RecetasController::class, 'create'])->name('recetas.create');
-    Route::get('recetas/{receta}/{categoria?}', [RecetasController::class, 'show'])->name('recetas.show');
+    // Delete
+    Route::delete('categorias/{categoria}', 'delete')->name('categorias.delete');
 });

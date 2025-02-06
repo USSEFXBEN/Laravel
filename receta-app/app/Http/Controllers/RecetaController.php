@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RecetasController extends Controller
+class RecetaController extends Controller
 {
     public function index(){
         return "Bienvenidos a las recetas";

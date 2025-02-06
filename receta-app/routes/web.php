@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 //     return "Bienvenido a la página Home";
 // });
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('Home');
 
 
 // Route::get('recetas', function () {
@@ -43,8 +43,8 @@ Route::get('/', HomeController::class);
 // Route::get('recetas/create', [RecetasController::class, 'create']);
 // Route::get('receta/{receta}/{categoria?}', [RecetasController::class, 'show']);
 
-Route::controller(RecetasController::class)->group(function(){
-    Route::get('recetas', 'index');
-    Route::get('recetas/create', 'create');
-    Route::get('recetas/{receta}/{categoria?}', 'show');
+Route::controller(RecetasController::class)->group(function () {
+    Route::get('recetas', [RecetasController::class, 'index'])->name('recetas.index');
+    Route::get('recetas/create', [RecetasController::class, 'create'])->name('recetas.create');
+    Route::get('recetas/{receta}/{categoria?}', [RecetasController::class, 'show'])->name('recetas.show');
 });

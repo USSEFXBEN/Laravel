@@ -36,7 +36,7 @@
             <option value="0">Pendiente</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-success">Guardar</button>
+    <button  type="submit" class="btn btn-success">Guardar</button>
     <a href="{{ route('proyectos.index') }}" class="btn btn-danger">Cancelar</a>
 </form>
 

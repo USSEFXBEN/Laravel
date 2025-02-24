@@ -9,7 +9,7 @@
 <div class="d-flex justify-content-center p-2 text-dark bg-opacity-25">
     <a class="btn btn-primary m-3 py-3 px-5 rounded-pill shadow-lg text-white fw-bold transition-transform transform-hover"
         href="{{ route('proyectos.index') }}" role="button">
-        Proyectos
+        Ver Proyectos
     </a>
 </div>
 

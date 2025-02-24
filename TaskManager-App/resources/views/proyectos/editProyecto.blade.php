@@ -22,7 +22,7 @@
         </div>
     
         <div class="form-group">
-            <label for="duracion">Duración</label>
+            <label for="duracion">Duración (en dias)</label>
             <input type="number" name="duracion" id="duracion" class="form-control" value="{{ $proyecto->duracion }}">
         </div>
     

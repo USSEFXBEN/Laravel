@@ -33,10 +33,10 @@ class ProyectoController extends Controller
     }
 
     // Mostrar el formulario para editar un proyecto
-    public function editarProyecto($id)
+    public function editarProyecto($proyecto)
     {
         // Recuperar el proyecto por su id
-        $proyecto = Proyecto::findOrFail($id); 
+        $proyecto = Proyecto::findOrFail($proyecto); 
 
         // Pasar el proyecto al formulario de edición
         return view('proyectos.editProyecto', compact('proyecto'));
@@ -64,7 +64,7 @@ class ProyectoController extends Controller
     }
 
     // Método para actualizar un proyecto
-    public function actualizarProyecto(Request $request, $id)
+    public function actualizarProyecto(Request $request, Proyecto $proyecto)
     {
         // Validar los datos del formulario
         $request->validate([
@@ -73,8 +73,7 @@ class ProyectoController extends Controller
             'duracion' => 'nullable|integer',
         ]);
 
-        // Buscar el proyecto por su id
-        $proyecto = Proyecto::findOrFail($id); 
+        
 
         // Actualizar los datos del proyecto
         $proyecto->update([
@@ -86,4 +85,11 @@ class ProyectoController extends Controller
         // Redirigir a la página de proyectos con un mensaje de éxito
         return redirect()->route('proyectos.index')->with('success', 'Proyecto actualizado exitosamente');
     }
+
+    public function delete(Proyecto $proyecto)
+    {
+        $proyecto->delete();
+        return redirect()->route('proyectos.index')->with('success', 'Proyecto eliminado exitosamente');
+    }
+
 }

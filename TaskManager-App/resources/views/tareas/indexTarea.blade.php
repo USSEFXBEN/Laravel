@@ -40,7 +40,13 @@
                     </td>
                     <td>
                         <a href="{{ route('tareas.mostrarTarea', [$proyecto, $tarea]) }}" class="btn btn-info btn-sm">Ver</a>
-                        <a href="{{ route('tareas.editarTarea', [$proyecto, $tarea]) }}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{{ route('tareas.editarTarea', [$proyecto, $tarea]) }}" class="btn btn-dark btn-sm">Editar</a>
+                        <form action="{{ route('tareas.elimiarTarea', [$proyecto, $tarea]) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-primary btn-danger" type="submit">Eliminar tarea</button> <!-- Botón de borrar proyecto -->
+                            
+                        </form>
                     </td>
                 </tr>
             @endforeach

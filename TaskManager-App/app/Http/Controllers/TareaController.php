@@ -29,7 +29,7 @@ class TareaController extends Controller
             'descripcion' => 'nullable|string',
             'dificultad' => 'required|string|max:255',
             'duracion' => 'required|integer',  
-            'estado' => 'required|boolean',    
+            'estado' => 'required|boolean'
         ]);
     
         $proyecto->tareas()->create([
@@ -37,7 +37,7 @@ class TareaController extends Controller
             'descripcion' => $request->descripcion,
             'dificultad' => $request->dificultad,
             'duracion' => $request->duracion,
-            'estado' => $request->estado,
+            'estado' => $request->estado
         ]);
     
         return redirect()->route('tareas.index', $proyecto)->with('success', 'Tarea creada exitosamente');
@@ -76,4 +76,10 @@ class TareaController extends Controller
 
         return redirect()->route('tareas.index', $proyecto)->with('success', 'Tarea actualizada exitosamente');
     }
+    public function delete(Proyecto $proyecto, Tarea $tarea)
+    {
+        $tarea->delete();
+        return redirect()->route('tareas.index', $proyecto)->with('success', 'Tarea eliminada exitosamente');
+    }
+
 }

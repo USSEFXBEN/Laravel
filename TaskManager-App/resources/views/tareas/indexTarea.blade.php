@@ -8,7 +8,11 @@
 <div class="d-flex justify-content-center p-2 text-dark bg-opacity-25">
     <a class="btn btn-success m-3" href="{{ route('tareas.crearTarea', $proyecto) }}" role="button">Crear Tarea</a>
 </div>
-
+@if(session('success'))
+    <div class="alert alert-success text-center">
+        {{ session('success') }}
+    </div>
+@endif
 <div class="container">
     <h4>Tareas Asociadas</h4>
     <table class="table table-bordered">

@@ -46,7 +46,9 @@
                             @method('delete')
                             <button class="btn btn-primary btn-danger" type="submit">Eliminar tarea</button> <!-- Botón de borrar proyecto -->
                             
+                            
                         </form>
+                        <a href="{{ route('seguimientos.index', [$proyecto, $tarea]) }}" class="btn btn-info btn-sm">Seguimiento</a>
                     </td>
                 </tr>
             @endforeach

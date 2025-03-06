@@ -50,6 +50,6 @@ Route::controller(SeguimientoController::class)->group(function () {
 
     Route::get('/proyectos/{proyecto}/tareas/{tarea}/seguimientos', action: 'index')->name('seguimientos.index');
     Route::get('/proyectos/{proyecto}/tareas/{tarea}/seguimientos/crear', 'crear')->name('seguimientos.crear');
-    Route::post('/proyectos/{proyecto}/tareas/seguimiento', 'store')->name('seguimiento.store');
-    Route::delete('/proyectos/{proyecto}/tareas/{tarea}//seguimientos/{seguimientos}/eliminar', 'deleteSeguimientos')->name('seguimientos.eliminarSeguimiento');
+    Route::post('/proyectos/{proyecto}/tareas/{tarea}/seguimientos', 'store')->name('seguimiento.store');
+    Route::delete('/proyectos/{proyecto}/tareas/{tarea}/seguimientos/{seguimiento}/eliminar', 'delete')->name('seguimientos.eliminarSeguimiento');
 });
